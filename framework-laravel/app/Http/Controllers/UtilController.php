@@ -17,7 +17,12 @@ public function HelloFunction () {
 
 // Primeira view
 public function homeFunction() {
-    return view('utils.homepage');
+        //consulta a base de dados
+      $class = 'Software Developer';
+
+      //consulta a data base select * from students
+      $students = ['Bia', 'Luana', 'Jessica', 'Paulinha'];
+    return view('utils.homepage', compact('class', 'students'));
 }
 
 // Função com variáveis
