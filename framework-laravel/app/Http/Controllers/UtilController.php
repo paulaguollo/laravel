@@ -22,7 +22,14 @@ public function homeFunction() {
 
       //consulta a data base select * from students
       $students = ['Bia', 'Luana', 'Jessica', 'Paulinha'];
-    return view('utils.homepage', compact('class', 'students'));
+
+      $cesaeInfo = [
+        'name' => 'Cesae',
+        'adress' => 'Rua Ciríaco Cardoso 186, 4150-212 Porto',
+        'email' => 'cesaeinfo@cesae.pt'
+      ];
+
+    return view('utils.homepage', compact('class', 'students', 'cesaeInfo'));
 }
 
 // Função com variáveis

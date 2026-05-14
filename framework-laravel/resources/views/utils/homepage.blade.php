@@ -15,6 +15,20 @@
   </ul>
   @endif
 
+  <h4>informacoes da escola: </h4>
+  <ul>
+ @foreach ($cesaeInfo as $info)
+ <li>{{$info}}</li>
+  
+  @endforeach
+</ul>
+
+{{-- <ul>Esses são os dados da escola
+<li>{{$cesaeInfo['name']}}</li>
+<li>{{$cesaeInfo['adress']}}</li>
+<li>{{$cesaeInfo['email']}}</li>
+  </ul> --}}
+
     <img src="{{asset('img/ted.jpeg')}}" alt="ted">
 
     <ul>
