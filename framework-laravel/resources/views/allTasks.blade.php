@@ -12,6 +12,8 @@
       <th scope="col">Tarefa</th>
          <th scope="col">Data</th>
             <th scope="col">Estado</th>
+            <th></th>
+            <th></th>
     </tr>
   </thead>
   <tbody>
@@ -24,6 +26,8 @@
       <td>{{ $task->description }}</td>
       <td>{{ $task->due_at }}</td>
       <td>{{$task->status == 1 ? 'concluído': 'execução' }}
+    <td><a href="{{route('tasks.view', $task->id )}}" class="btn btn-info">Ver</a></td>
+    <td><a href="{{ route('tasks.delete', $task->id) }}" class="btn btn-danger">Apagar</a></td>
       </td>
        
       {{--@if($task->status == 1) 

@@ -58,4 +58,14 @@ public function viewUser($id){
  
     }
 
+    public function deleteUser($id){
+
+    DB::table('tasks_')->where('user_id', $id)->delete();
+    DB::table('users')->where('id', $id)->delete();
+
+ 
+    return back();
+ 
+    }
+
 }

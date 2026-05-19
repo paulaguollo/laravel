@@ -28,12 +28,17 @@ Route::get('/add_users', [UserController::class, 'userFunction']  )->name('users
 // Rota para adicionar utilizadores
 Route::get('/all_users', [UserController::class, 'allUsersFunction']  )->name('all.users'); 
 
-
 // Rota para adicionar utilizadores
 Route::get('/all_tasks', [TaskController::class, 'alltasksFunction']  )->name('all.tasks'); 
 
 //rota com parametros que carrega a ficha de cada user
 Route::get('/view_user/{id}', [UserController::class, 'viewUser'])->name('users.view');
+
+Route::get('/delete_user/{id}', [UserController::class, 'deleteUser'])->name('users.delete');
+
+Route::get('/delete_task/{id}', [TaskController::class, 'deleteTask'])->name('tasks.delete');
+
+Route::get('/view_task/{id}', [TaskController::class, 'viewTask'])->name('tasks.view');
 
 // fallback
 Route::get('/utils.fallback', [UtilController::class, 'fallbackFunction'] )->name('utils.fallback');

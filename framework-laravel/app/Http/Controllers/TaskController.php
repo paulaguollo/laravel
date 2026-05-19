@@ -26,5 +26,21 @@ class TaskController extends Controller
    
     return view('allTasks', compact('tasksFromDb')); // Informação corresponde de onde vai buscar a parte visual (views)
 }
+public function viewTask($id){
 
+ $tasks = DB::table('tasks_')->where('id', $id)->first();
+ 
+    return view('viewTask', compact('tasks'));
+ 
+    }
+
+    public function deleteTask($id){
+
+    DB::table('tasks_')->where('user_id', $id)->delete();
+    DB::table('users')->where('id', $id)->delete();
+
+ 
+    return back();
+ 
+    }
 }
