@@ -16,7 +16,30 @@
 @endforeach
 </ul>
 
+    <h3>Aqui tem todos os users(dados reais)</h3>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Email</th>
+      <th scope="col">NIF</th>
+    </tr>
+  </thead>
+  <tbody>
 
-    <h4>Volte para a HOME <a href="{{route('home')}}">aqui</a></h4>
+    @foreach ($usersFromDb as $user)
 
+    <tr>
+      <th scope="row">{{ $user->id}}</th>
+      <td>{{ $user->name }}</td>
+      <td>{{ $user->email }}</td>
+      <td>{{ $user->nif }}</td>
+    </tr>
+    
+    @endforeach
+  </tbody>
+</table>
+
+     <h4>Volte para a HOME <a href="{{route('home')}}">aqui</a></h4>
 @endsection

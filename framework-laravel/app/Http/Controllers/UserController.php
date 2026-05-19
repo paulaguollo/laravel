@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -27,10 +28,15 @@ class UserController extends Controller
  
         ];
 
+        //oficialmente dados da base de dados
+        $usersFromDb = DB::table('users')->get();
+        
+        //dd($usersFromDb); para ver os dados
+
    //debug
         //var_dump($contactInfo['name']); //   ou dd($contactInfo['name']);
    
-    return view('users.allUsers', compact('contactInfo', 'contacts')); // Informação corresponde de onde vai buscar a parte visual (views)
+    return view('users.allUsers', compact('contactInfo', 'contacts', 'usersFromDb')); // Informação corresponde de onde vai buscar a parte visual (views)
 }
 
 }
