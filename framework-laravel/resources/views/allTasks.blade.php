@@ -1,0 +1,34 @@
+  @extends('layouts.fo')
+
+  @section('content')
+</ul>
+
+    <h3>Aqui tem todas as tarefas (dados reais)</h3>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Tarefa</th>
+         <th scope="col">Data</th>
+            <th scope="col">Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    @foreach ($tasksFromDb as $task)
+
+    <tr>
+      <th scope="row">{{ $task->id}}</th>
+      <td>{{ $task->username }}</td>
+      <td>{{ $task->description }}</td>
+      <td>{{ $task->due_at }}</td>
+      <td>{{ $task->status}}</td>
+    </tr>
+    
+    @endforeach
+  </tbody>
+</table>
+
+     <h4>Volte para a HOME <a href="{{route('home')}}">aqui</a></h4>
+@endsection

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UtilController;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,11 @@ Route::get('/add_users', [UserController::class, 'userFunction']  )->name('users
 
 // Rota para adicionar utilizadores
 Route::get('/all_users', [UserController::class, 'allUsersFunction']  )->name('all.users'); 
+
+
+// Rota para adicionar utilizadores
+Route::get('/all_tasks', [TaskController::class, 'alltasksFunction']  )->name('all.tasks'); 
+
 
 // fallback
 Route::get('/utils.fallback', [UtilController::class, 'fallbackFunction'] )->name('utils.fallback');

@@ -36,6 +36,7 @@
         <li><a href="{{route('var.teste')}}">Variáveis</a></li>
         <li><a href="{{route('users.add')}}">Adicionar Utilizador</a></li>
         <li><a href="{{route('all.users')}}">Ver todos os Utilizadores</a></li>
+        <li><a href="{{route('all.tasks')}}">Ver todas as Tarefas</a></li>
     </ul>
 
     @endsection

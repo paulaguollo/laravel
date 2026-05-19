@@ -29,8 +29,12 @@ class UserController extends Controller
         ];
 
         //oficialmente dados da base de dados
-        $usersFromDb = DB::table('users')->get();
-        
+        $usersFromDb = DB::table('users')
+        ->whereNotNull('adress')
+        // ->where('password', '12345') aparece  quem tem senha 12345
+           // ->whereNotNull('adress', null) aparece o que nao tem adress
+              // ->whereNull('adress') aparece o que nao tem adress
+        ->get();
         //dd($usersFromDb); para ver os dados
 
    //debug
