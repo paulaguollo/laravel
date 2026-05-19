@@ -23,7 +23,14 @@
       <td>{{ $task->username }}</td>
       <td>{{ $task->description }}</td>
       <td>{{ $task->due_at }}</td>
-      <td>{{ $task->status}}</td>
+      <td>{{$task->status == 1 ? 'concluído': 'execução' }}
+      </td>
+       
+      {{--@if($task->status == 1) 
+      concluido 
+      @else 
+      em execução 
+      @endif --}}
     </tr>
     
     @endforeach

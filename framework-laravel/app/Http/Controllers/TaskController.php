@@ -16,9 +16,12 @@ class TaskController extends Controller
     public function alltasksFunction() { // Caminho do browser (URL)
 
          $tasksFromDb = DB::table('tasks_')
+         // join() signature is join(table, first_column, operator, second_column)
          ->join('users', 'users.id', '=', 'tasks_.user_id' )
          ->select('tasks_.*', 'users.name AS username')
-         ->get();
+        ->get();
+
+         //dd($tasksFromDb->nome);
 
    
     return view('allTasks', compact('tasksFromDb')); // Informação corresponde de onde vai buscar a parte visual (views)

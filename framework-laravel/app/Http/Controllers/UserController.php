@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -29,12 +30,18 @@ class UserController extends Controller
         ];
 
         //oficialmente dados da base de dados
-        $usersFromDb = DB::table('users')
-        ->whereNotNull('adress')
+
+        //$usersFromDb = DB::table('users')
+        //->whereNotNull('adress')
         // ->where('password', '12345') aparece  quem tem senha 12345
            // ->whereNotNull('adress', null) aparece o que nao tem adress
               // ->whereNull('adress') aparece o que nao tem adress
-        ->get();
+        //->get();
+
+        //query usando o model
+        $usersFromDb = User::get();
+
+
         //dd($usersFromDb); para ver os dados
 
    //debug
@@ -42,5 +49,13 @@ class UserController extends Controller
    
     return view('users.allUsers', compact('contactInfo', 'contacts', 'usersFromDb')); // Informação corresponde de onde vai buscar a parte visual (views)
 }
+
+public function viewUser($id){
+
+ $user = DB::table('users')->where('id', $id)->first();
+ 
+    return view('users.view', compact('user'));
+ 
+    }
 
 }
