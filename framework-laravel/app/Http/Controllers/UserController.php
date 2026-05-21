@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     // Função para adicionar utilizadores
     public function userFunction() { // Caminho do browser (URL)
-    return view('users.add'); // Informação corresponde de onde vai buscar a parte visual (views)
+    return view('users.addUtilizadores'); // Informação corresponde de onde vai buscar a parte visual (views)
 }
 
     // Função para mostrar todosos utilizadores
@@ -67,5 +67,17 @@ public function viewUser($id){
     return back();
  
     }
+
+    public function storeUser(Request $request) {
+       // dd($request->all());
+
+            $request->validate([
+            'name'=>'required|string|max:50',
+            'email'=>'required|email|unique:users',
+            'password'=>'min:8|required'
+        ]);
+
+    }
+
 
 }
