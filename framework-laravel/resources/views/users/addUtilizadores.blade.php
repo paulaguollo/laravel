@@ -1,13 +1,16 @@
 @extends('layouts.fo')
  
 @section('content')
+
+
+
     <h4>Aqui podes adicionar utilizadores!</h4>
     <form method="POST" action="{{route ('users.store')}}">
       @csrf
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nome</label>
-            <input name="nome" required type="text" class="form-control" id="idname" aria-describedby="emailHelp">
-             @error('nome')
+            <input name="name" required type="text" class="form-control" id="idname" aria-describedby="emailHelp">
+             @error('name')
             <p>Nome inválido ou inexistente</p>
             @enderror
         </div>

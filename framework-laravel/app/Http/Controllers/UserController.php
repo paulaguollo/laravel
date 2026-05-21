@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -76,6 +77,15 @@ public function viewUser($id){
             'email'=>'required|email|unique:users',
             'password'=>'min:8|required'
         ]);
+
+      User::insert([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password'=> Hash::make($request->password)
+        ]);
+
+
+                return redirect()->route('all.users')->with('message', 'user adicionado com sucesso!');
 
     }
 

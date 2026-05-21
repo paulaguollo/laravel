@@ -2,6 +2,14 @@
 
   @section('content')
 
+      @if(session('message'))
+    <div class="alert alert-success">
+        {{session('message')}}
+ 
+    </div>
+    @endif
+
+
     <h3>Aqui tens todos os Users</h3>
  
     <p>A pessoa de contacto é {{$contactInfo['name']}} e podes direcionar-se a {{$contactInfo['email']}}</p>
