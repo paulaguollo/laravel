@@ -1,6 +1,14 @@
   @extends('layouts.fo')
 
   @section('content')
+      @if(session('message'))
+    <div class="alert alert-success">
+        {{session('message')}}
+ 
+    </div>
+    @endif
+
+  
 </ul>
 
     <h3>Aqui tem todas as tarefas (dados reais)</h3>

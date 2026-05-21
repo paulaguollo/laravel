@@ -28,21 +28,31 @@ Route::get('/add_users', [UserController::class, 'userFunction']  )->name('users
 // Rota para adicionar utilizadores
 Route::get('/all_users', [UserController::class, 'allUsersFunction']  )->name('all.users'); 
 
-// Rota para adicionar utilizadores
-Route::get('/all_tasks', [TaskController::class, 'alltasksFunction']  )->name('all.tasks'); 
-
 //rota que recebe os dados do formulário e os insere na base de dados
 Route::post('/store_user', [UserController::class, 'storeUser'])->name('users.store');
 
 
+//rota com parametro que delete user
+Route::get('/delete_user/{id}', [UserController::class, 'deleteUser'])->name('users.delete');
+
 //rota com parametros que carrega a ficha de cada user
 Route::get('/view_user/{id}', [UserController::class, 'viewUser'])->name('users.view');
 
-Route::get('/delete_user/{id}', [UserController::class, 'deleteUser'])->name('users.delete');
 
+
+//URL   --- FUNCAO ----- NOME DA ROTA
 Route::get('/delete_task/{id}', [TaskController::class, 'deleteTask'])->name('tasks.delete');
 
 Route::get('/view_task/{id}', [TaskController::class, 'viewTask'])->name('tasks.view');
+
+// Rota para adicionar utilizadores
+Route::get('/all_tasks', [TaskController::class, 'alltasksFunction']  )->name('all.tasks'); 
+
+// Rota que carrega visualmente o formulario
+ // Nome da rota -> quando quiser chamar essa rota, chamar por esse nome
+Route::get('/add_task', [TaskController::class, 'addTask'])->name('tasks.add');
+
+Route::post('/store_task', [TaskController::class, 'storeTask'])->name('tasks.store');
 
 // fallback
 Route::get('/utils.fallback', [UtilController::class, 'fallbackFunction'] )->name('utils.fallback');
