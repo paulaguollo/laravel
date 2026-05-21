@@ -24,7 +24,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
              $table->dropColumn('nif');
-            $table->dropColumn('address');
+            $table->dropColumn('adress');
         });
     }
 };
