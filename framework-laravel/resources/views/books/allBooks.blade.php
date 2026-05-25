@@ -9,31 +9,30 @@
 
 </ul>
 
-    <h3>Aqui tem todas as tarefas (dados reais)</h3>
+    <h3>Aqui tem todos os livros</h3>
     <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Nome</th>
-      <th scope="col">Tarefa</th>
-         <th scope="col">Data</th>
-            <th scope="col">Estado</th>
-            <th></th>
+      <th scope="col">Preço Estimado</th>
+        <th scope="col">Preço Estimado - Preço Pago></th>
             <th></th>
     </tr>
   </thead>
   <tbody>
 
-    @foreach ($tasksFromDb as $task)
+    @foreach ($booksFromDb as $books)
 
     <tr>
-      <th scope="row">{{ $task->id}}</th>
-      <td>{{ $task->username }}</td>
-      <td>{{ $task->description }}</td>
-      <td>{{ $task->due_at }}</td>
-      <td>{{$task->status == 1 ? 'concluído': 'execução' }}
-    <td><a href="{{route('tasks.view', $task->id )}}" class="btn btn-info">Ver</a></td>
-    <td><a href="{{ route('tasks.delete', $task->id) }}" class="btn btn-danger">Apagar</a></td>
+      <th scope="row">{{ $books->id}}</th>
+      <td>{{ $books->username }}</td>
+      <td>{{ $books->estimated_price }}</td>
+      <td>{{ $books->paid_price }}</td>
+      <td>{{ $books->new_price }}</td>
+      <td>{{$books->status == 1 ? 'concluído': 'execução' }}
+    <td><a href="{{route('books.view', $book->id )}}" class="btn btn-info">Ver</a></td>
+    <td><a href="{{ route('books.delete', $book->id) }}" class="btn btn-danger">Apagar</a></td>
       </td>
        
     </tr>

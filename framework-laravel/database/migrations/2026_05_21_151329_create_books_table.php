@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->double('estimated_price');
             $table->double('paid_price')->nullable();
+             $table->double('new_price');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
