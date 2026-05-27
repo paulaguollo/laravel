@@ -1,9 +1,9 @@
 @extends('layouts.fo')
 
 @section('content')
-
-    <h5>Informações do Livro</h5>
-
+<br>
+    <h5>INFORMAÇÃO DO LIVRO</h5>
+<br>
     <table class="table">
         <tbody>
             <tr>
@@ -37,5 +37,9 @@
 
     <a href="{{ route('books.delete', $books->id) }}" class="btn btn-danger">Apagar</a>
     <a href="{{ route('books.all') }}" class="btn btn-secondary">Voltar</a>
+
+<br>
+<br>
+<p>Volte para o menu de opções <a href="{{ route('home') }}">aqui</a></p>
 
 @endsection

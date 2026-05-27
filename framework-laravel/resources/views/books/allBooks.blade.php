@@ -8,7 +8,9 @@
         </div>
     @endif
 
-    <h3>Aqui tem todos os livros</h3>
+    <br>
+    <h3>OFERTA DE LIVROS PARA O VERÃO</h3>
+    <br>
 
     <table class="table">
         <thead>
@@ -19,7 +21,7 @@
                 <th>Preço Estimado</th>
                 <th>Preço Pago</th>
                 <th>Diferença</th>
-                <th>Ações</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -38,7 +40,8 @@
                     @endif
                 </td>
                 <td>
-                    <a href="{{ route('books.view', $books->id) }}" class="btn btn-info">Ver</a>
+                    <a href="{{ route('books.view', $books->id) }}" class="btn btn-success">Ver</a>
+                    <a href="#" class="btn btn-primary">Editar</a>
                     <a href="{{ route('books.delete', $books->id) }}" class="btn btn-danger">Apagar</a>
                 </td>
             </tr>
@@ -46,6 +49,11 @@
         </tbody>
     </table>
 
-    <h4>Volte para a HOME <a href="{{ route('home') }}">aqui</a></h4>
+
+<p>Quer adicionar um livro? Clique <a href="{{ route('books.add') }}">aqui</a></p>
+
+<br>
+
+<p>Volte para o menu de opções <a href="{{ route('home') }}">aqui</a></p>
 
 @endsection

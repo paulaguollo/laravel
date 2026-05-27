@@ -2,10 +2,10 @@
 
   @section('content')
 
-    <h4>Bem vindo à aplicação de Servidor!</h4>
+    <h1 >Bem vindo à aplicação de Servidor!</h1>
 
   @if($class)
-    <h3>Olá turma {{$class}}</h3>
+    <h6>Olá turma {{$class}}</h6>
 
     <ul>
     @foreach($students as $item)
@@ -15,7 +15,7 @@
   </ul>
   @endif
 
-  <h4>informacoes da escola: </h4>
+  <h6>informações da escola: </h6>
   <ul>
  @foreach ($cesaeInfo as $info)
  <li>{{$info}}</li>
@@ -29,8 +29,6 @@
 <li>{{$cesaeInfo['email']}}</li>
   </ul> --}}
 
-    <img src="{{asset('img/ted.jpeg')}}" alt="ted">
-
     <ul>
         <li><a href="{{route('welcome')}}">Welcome</a></li>
         <li><a href="{{route('var.teste')}}">Variáveis</a></li>
@@ -42,6 +40,8 @@
         <li><a href="{{route('books.add')}}">Adicionar Livros</a></li>
 
     </ul>
+
+        <img src="{{asset('img/ted.jpeg')}}" alt="ted">
 
     @endsection
  
