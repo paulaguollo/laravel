@@ -3,6 +3,9 @@
   @section('content')
 
     <h1 >Bem vindo à aplicação de Servidor!</h1>
+    @auth
+    <h2>Olá {{Auth::user()->name}}</h2>
+    @endauth
 
   @if($class)
     <h6>Olá turma {{$class}}</h6>
