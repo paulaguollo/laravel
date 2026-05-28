@@ -34,7 +34,7 @@
       <td>{{ $task->description }}</td>
       <td>{{ $task->due_at }}</td>
       <td>{{$task->status == 1 ? 'concluído': 'execução' }}
-    <td><a href="{{route('tasks.view', $task->id )}}" class="btn btn-info">Ver</a></td>
+    <td><a href="{{route('tasks.view', $task->id )}}" class="btn btn-info">Ver ou Editar</a></td>
     <td><a href="{{ route('tasks.delete', $task->id) }}" class="btn btn-danger">Apagar</a></td>
       </td>
        

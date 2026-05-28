@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -72,7 +73,7 @@ class TaskController extends Controller
     public function deleteTask($id){
 
 
-       DB::table('tasks')->where('id', $id)->delete();
+       DB::table('tasks_')->where('id', $id)->delete();
 
         return back();
 
@@ -80,30 +81,36 @@ class TaskController extends Controller
 
     public function viewTask($id){
 
+        $users = DB::table('users')->select('users.name', 'users.id')->get();
+
         $task = DB::table('tasks_')
         ->where('tasks_.id', $id)
           ->join('users', 'tasks_.user_id', 'users.id')
         ->select('tasks_.nome', 'tasks_.description', 'tasks_.due_at', 'tasks_.status', 'tasks_.id', 'users.name as username', 'tasks_.user_id')
         ->first();
 
-        return view('viewTask', compact('task'));
+        return view('viewTask', compact('task', 'users'));
 
     }
 
-    public function updateTask(Request $request) {
-   $request->validate([
-            'nome'=>'required|string|max:50',
-        ]);
+public function updateTask(Request $request) {
  
-  db::table('tasks_')
-        ->where('id',$request->id)
-        ->update([
-               'nome'        => $request->nome,
-            'description' => $request->description,
-            'user_id'     => $request->user_id,
-            'status'     => $request->status
-        ]);
-
-        return redirect()->route('all.tasks')->with('message', 'task actualizado com sucesso!');
-} 
+$request->validate([
+    'name' => 'String|required|max:50',
+    'user_id' => 'required|exists:users,id'
+]);
+ 
+db::table('tasks')
+->where('id', $request->id) // aqui estamos a dizer que queremos atualizar a task com o id que é igual ao id que recebemos por parametro, e o where é para dizer que queremos ir buscar a task com o id que é igual ao id que recebemos por parametro
+->update([
+    'name' => $request->name,
+    'user_id' => $request->user_id ,
+     'description' => $request->description ,
+      'due_at' => $request->due_at ,
+      'status' => $request->status ,
+    
+]);
+ 
+    return redirect()->route('tasks.show')->with('message', 'Task atualizada com sucesso!');     // aqui estamos a dizer que queremos carregar a view tasks.view, e o compact é para dizer que queremos passar a variável task para a view, ou seja, queremos passar os dados da task que obtivemos da base de dados para a view
+}
 }
