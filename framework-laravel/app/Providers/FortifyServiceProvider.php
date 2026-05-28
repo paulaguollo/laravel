@@ -53,8 +53,12 @@ class FortifyServiceProvider extends ServiceProvider
             );
         });
 
-        
 
+//ativar função login
+
+Fortify::loginView(function() {
+    return view('auth.login');
+});
 
 
 
