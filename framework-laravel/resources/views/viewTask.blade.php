@@ -7,6 +7,7 @@
    <form method="POST" action="{{route ('tasks.update')}}">
       @csrf
       @method('PUT')
+      <input type="hidden" name="id" value="{{ $task->id }}">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nome da Tarefa</label>
             <input name="nome" value="{{ $task->nome }}" required type="text" class="form-control" id="idname" aria-describedby="emailHelp">
@@ -53,6 +54,6 @@
         <button type="submit" class="btn btn-primary">Atualizar</button>
     </form>
 <br>
-     <p>Volte para a HOME <a href="{{route('home')}}">aqui</a></p>
+    <p>Volte para o menu de opções <a href="{{ route('home') }}">aqui</a></p>
 @endsection
 

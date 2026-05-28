@@ -95,15 +95,17 @@ class TaskController extends Controller
 
 public function updateTask(Request $request) {
  
+//dd($request->all());
+
 $request->validate([
-    'name' => 'String|required|max:50',
+    'nome' => 'String|required|max:50',
     'user_id' => 'required|exists:users,id'
 ]);
  
-db::table('tasks')
+db::table('tasks_')
 ->where('id', $request->id) // aqui estamos a dizer que queremos atualizar a task com o id que é igual ao id que recebemos por parametro, e o where é para dizer que queremos ir buscar a task com o id que é igual ao id que recebemos por parametro
 ->update([
-    'name' => $request->name,
+    'nome' => $request->nome,
     'user_id' => $request->user_id ,
      'description' => $request->description ,
       'due_at' => $request->due_at ,
@@ -111,6 +113,6 @@ db::table('tasks')
     
 ]);
  
-    return redirect()->route('tasks.show')->with('message', 'Task atualizada com sucesso!');     // aqui estamos a dizer que queremos carregar a view tasks.view, e o compact é para dizer que queremos passar a variável task para a view, ou seja, queremos passar os dados da task que obtivemos da base de dados para a view
+    return redirect()->route('all.tasks')->with('message', 'Task atualizada com sucesso!');     // aqui estamos a dizer que queremos carregar a view tasks.view, e o compact é para dizer que queremos passar a variável task para a view, ou seja, queremos passar os dados da task que obtivemos da base de dados para a view
 }
 }

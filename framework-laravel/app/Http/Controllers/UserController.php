@@ -47,7 +47,8 @@ class UserController extends Controller
         $usersFromDb= DB::table('users');
 
         if($search){
-            $usersFromDb->where('name', $search);
+            $usersFromDb->where('name', "LIKE", "%{$search}%");
+            $usersFromDb->orwhere('email', "LIKE", "%{$search}%");
         }
 
         $usersFromDb=  $usersFromDb->get();

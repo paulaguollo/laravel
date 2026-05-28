@@ -32,4 +32,6 @@
  
         <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
+
+    <p>Volte para o menu de opções <a href="{{ route('home') }}">aqui</a></p>
 @endsection

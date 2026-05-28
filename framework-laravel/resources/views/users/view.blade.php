@@ -33,4 +33,5 @@
         <button type="submit" class="btn btn-primary">Actualizar</button>
     </form>
 
+    <p>Volte para o menu de opções <a href="{{ route('home') }}">aqui</a></p>
 @endsection

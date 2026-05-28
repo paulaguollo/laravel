@@ -22,6 +22,7 @@
             <th scope="col">Estado</th>
             <th></th>
             <th></th>
+              <th></th>
     </tr>
   </thead>
   <tbody>
@@ -31,12 +32,14 @@
     <tr>
       <th scope="row">{{ $task->id}}</th>
       <td>{{ $task->username }}</td>
+      <td>{{ $task->nome }}</td>
       <td>{{ $task->description }}</td>
       <td>{{ $task->due_at }}</td>
       <td>{{$task->status == 1 ? 'concluído': 'execução' }}
     <td><a href="{{route('tasks.view', $task->id )}}" class="btn btn-info">Ver ou Editar</a></td>
     <td><a href="{{ route('tasks.delete', $task->id) }}" class="btn btn-danger">Apagar</a></td>
       </td>
+  
        
       {{--@if($task->status == 1) 
       concluido 
@@ -49,5 +52,5 @@
   </tbody>
 </table>
 
-     <h4>Volte para a HOME <a href="{{route('home')}}">aqui</a></h4>
+     <p>Volte para o menu de opções <a href="{{ route('home') }}">aqui</a></p>
 @endsection

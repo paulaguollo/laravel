@@ -25,11 +25,12 @@
 </ul>
 
     <h3>Aqui tem todos os users(dados reais)</h3>
+    <br>
     <form action="">
         <input type="text" name="search">
         <button type="submit">Procurar</button>
     </form>
-
+<br>
     <table class="table">
   <thead>
     <tr>
@@ -56,5 +57,5 @@
   </tbody>
 </table>
 
-     <h4>Volte para a HOME <a href="{{route('home')}}">aqui</a></h4>
+     <p>Volte para o menu de opções <a href="{{ route('home') }}">aqui</a></p>
 @endsection
