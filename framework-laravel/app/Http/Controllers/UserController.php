@@ -41,10 +41,18 @@ class UserController extends Controller
         //->get();
 
         //query usando o model
-        $usersFromDb = User::get();
 
+        $search = request()->query('search') ? request()->query('search') : null;
 
-        //dd($usersFromDb); para ver os dados
+        $usersFromDb= DB::table('users');
+
+        if($search){
+            $usersFromDb->where('name', $search);
+        }
+
+        $usersFromDb=  $usersFromDb->get();
+
+        //dd($usersFromDb); 
 
    //debug
         //var_dump($contactInfo['name']); //   ou dd($contactInfo['name']);

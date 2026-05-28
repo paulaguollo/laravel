@@ -25,6 +25,11 @@
 </ul>
 
     <h3>Aqui tem todos os users(dados reais)</h3>
+    <form action="">
+        <input type="text" name="search">
+        <button type="submit">Procurar</button>
+    </form>
+
     <table class="table">
   <thead>
     <tr>
