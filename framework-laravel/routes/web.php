@@ -4,6 +4,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UtilController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
  
 Route::get('/', [UtilController::class, 'welcomeFunction'])->name('welcome');
@@ -53,7 +54,7 @@ Route::get('/delete_task/{id}', [TaskController::class, 'deleteTask'])->name('ta
 Route::get('/view_task/{id}', [TaskController::class, 'viewTask'])->name('tasks.view');
 
 // Rota para adicionar tarefas
-Route::get('/all_tasks', [TaskController::class, 'alltasksFunction']  )->name('all.tasks'); 
+Route::get('/all_tasks', [TaskController::class, 'alltasksFunction']  )->name('all.tasks')->middleware('auth'); 
 
 // Rota que carrega visualmente o formulario
  // Nome da rota -> quando quiser chamar essa rota, chamar por esse nome
@@ -89,6 +90,10 @@ Route::get('/add_book', [BookController::class, 'addBook'])->name('books.add');
 Route::post('/store_book', [BookController::class, 'storeBook'])->name('books.store');
 
 /**********************************FINAL DAS ROTAS DOS BOOKS******************************* */
+
+
+// View blade dos livros
+Route::get('/view_book/{id}', [DashboardController::class, 'viewDashboard'])->name('dashboard.view');
 
 // fallback
 Route::get('/utils.fallback', [UtilController::class, 'fallbackFunction'] )->name('utils.fallback');

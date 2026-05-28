@@ -41,6 +41,7 @@
         <li><a href="{{route('tasks.add')}}">Adicionar Tarefas</a></li>
         <li><a href="{{route('books.all')}}">Ver todos os Livros</a></li>
         <li><a href="{{route('books.add')}}">Adicionar Livros</a></li>
+        <li><a href="{{route('dashboard.view')}}">Ir para o Dashboard</a></li>
 
     </ul>
 
