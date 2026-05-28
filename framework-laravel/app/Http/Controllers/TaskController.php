@@ -27,39 +27,6 @@ class TaskController extends Controller
         return view('allTasks', compact('tasksFromDb'));
     }
 
-
-    /**
-     * Mostra os detalhes de UMA tarefa específica.
-     * Recebe o $id da tarefa pela URL (ex: /task/5)
-     */
-    public function viewTask($id)
-    {
-        // Busca na tabela tasks_ apenas a linha onde o id corresponde
-        // first() retorna só o primeiro resultado (um objeto), ao invés de uma coleção
-        $tasks = DB::table('tasks_')->where('id', $id)->first();
-
-        return view('viewTask', compact('tasks'));
-    }
-
-
-    /**
-     * Elimina uma tarefa E o utilizador associado.
-     * ATENÇÃO: esta função apaga tanto as tarefas do utilizador
-     * como o próprio utilizador da base de dados!
-     */
-    public function deleteTask($id)
-    {
-        // Primeiro apaga todas as tarefas que pertencem ao utilizador com este $id
-        DB::table('tasks_')->where('user_id', $id)->delete();
-
-        // Depois apaga o próprio utilizador
-        DB::table('users')->where('id', $id)->delete();
-
-        // Redireciona de volta para a página anterior
-        return back();
-    }
-
-
     /**
      * Mostra o formulário para adicionar uma nova tarefa.
      * Carrega a lista de utilizadores para preencher um <select> no formulário.
@@ -73,17 +40,6 @@ class TaskController extends Controller
 
         // Envia os utilizadores para a view 'addTask'
         return view('addTask', compact('users'));
-    }
-
-
-    /**
-     * (Função antiga/não utilizada aparentemente)
-     * Retorna uma view diferente para adicionar tarefas.
-     * Provavelmente foi substituída pela addTask() acima.
-     */
-    public function taskFunction()
-    {
-        return view('tasks.add');
     }
 
 
@@ -112,4 +68,42 @@ class TaskController extends Controller
         // A mensagem flash só existe durante o próximo request (ideal para mostrar alertas)
         return redirect()->route('all.tasks')->with('message', 'Tarefa actualizada com sucesso!');
     }
+
+    public function deleteTask($id){
+
+
+       DB::table('tasks')->where('id', $id)->delete();
+
+        return back();
+
+    }
+
+    public function viewTask($id){
+
+        $task = DB::table('tasks_')
+        ->where('tasks_.id', $id)
+          ->join('users', 'tasks_.user_id', 'users.id')
+        ->select('tasks_.nome', 'tasks_.description', 'tasks_.due_at', 'tasks_.status', 'tasks_.id', 'users.name as username', 'tasks_.user_id')
+        ->first();
+
+        return view('viewTask', compact('task'));
+
+    }
+
+    public function updateTask(Request $request) {
+   $request->validate([
+            'nome'=>'required|string|max:50',
+        ]);
+ 
+  db::table('tasks_')
+        ->where('id',$request->id)
+        ->update([
+               'nome'        => $request->nome,
+            'description' => $request->description,
+            'user_id'     => $request->user_id,
+            'status'     => $request->status
+        ]);
+
+        return redirect()->route('all.tasks')->with('message', 'task actualizado com sucesso!');
+} 
 }

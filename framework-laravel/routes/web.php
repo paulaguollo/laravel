@@ -29,7 +29,7 @@ Route::get('/parametros/{name}', function ($name) {
 Route::get('/add_users', [UserController::class, 'userFunction']  )->name('users.add'); 
  
 // Rota para adicionar utilizadores
-Route::get('/all_users', [UserController::class, 'allUsersFunction']  )->name('all.users'); 
+Route::get('/all_users', [UserController::class, 'allUsersFunction']  )->name('users.all'); 
 
 //rota que recebe os dados do formulário e os insere na base de dados
 Route::post('/store_user', [UserController::class, 'storeUser'])->name('users.store');
@@ -39,6 +39,9 @@ Route::get('/delete_user/{id}', [UserController::class, 'deleteUser'])->name('us
 
 //rota com parametros que carrega a ficha de cada user
 Route::get('/view_user/{id}', [UserController::class, 'viewUser'])->name('users.view');
+
+//rota que recebe os dados do user
+Route::put('/update-user', [UserController::class, 'updateUser'])->name('users.update');
 
 /**********************************FINAL DAS ROTAS DO USER********************************* */
 
@@ -57,6 +60,11 @@ Route::get('/all_tasks', [TaskController::class, 'alltasksFunction']  )->name('a
 Route::get('/add_task', [TaskController::class, 'addTask'])->name('tasks.add');
 
 Route::post('/store_task', [TaskController::class, 'storeTask'])->name('tasks.store');
+
+//rota que recebe os dados das tasks
+Route::put('/update-task', [TaskController::class, 'updateTask'])->name('tasks.update');
+
+
 
 /**********************************FINAL DAS ROTAS DAS TASKS******************************* */
 

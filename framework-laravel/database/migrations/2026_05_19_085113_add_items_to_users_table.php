@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('adress')->after('email')->nullable();
-             $table->string('nif')->after('adress')->default('ainda não tinha nif');
+
         });
     }
 
@@ -23,7 +23,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-             $table->dropColumn('nif');
             $table->dropColumn('adress');
         });
     }

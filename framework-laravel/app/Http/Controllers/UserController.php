@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -62,7 +63,11 @@ public function viewUser($id){
     public function deleteUser($id){
 
     DB::table('tasks_')->where('user_id', $id)->delete();
+    
+    DB::table('books')->where('user_id', $id)->delete();
+
     DB::table('users')->where('id', $id)->delete();
+
 
  
     return back();
@@ -85,9 +90,22 @@ public function viewUser($id){
         ]);
 
 
-                return redirect()->route('all.users')->with('message', 'user adicionado com sucesso!');
+                return redirect()->route('users.all')->with('message', 'user adicionado com sucesso!');
 
     }
 
+public function updateUser(Request $request) {
+   $request->validate([
+            'name'=>'required|string|max:50',
+        ]);
+ 
+  db::table('users')
+        ->where('id',$request->id)
+        ->update([
+            'name' =>$request->name,
+             'adress' =>$request->adress,
+        ]);
 
+        return redirect()->route('users.all')->with('message', 'user actualizado com sucesso!');
+} 
 }

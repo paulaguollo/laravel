@@ -31,7 +31,6 @@
       <th scope="col">#</th>
       <th scope="col">Nome</th>
       <th scope="col">Email</th>
-      <th scope="col">NIF</th>
       <th></th>
       <th></th>
     </tr>
@@ -44,7 +43,6 @@
       <th scope="row">{{ $user->id}}</th>
       <td>{{ $user->name }}</td>
       <td>{{ $user->email }}</td>
-      <td>{{ $user->nif }}</td>
           <td><a href="{{route('users.view',$user->id )}}" class="btn btn-info">Ver</a></td>
           <td><a href="{{ route('users.delete', $user->id) }}" class="btn btn-danger">Apagar</a></td>
         </tr>

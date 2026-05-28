@@ -1,14 +1,14 @@
 @extends('layouts.fo')
  
 @section('content')
-    <h5>Info da task</h5>
+    <h5>Info e edição da task{{ $task->nome }}</h5>
 
 
      <tr>
-      <th scope="row">{{ $tasks->id}}</th>
-      <td>{{ $tasks->nome }}</td>
-      <td>{{ $tasks->description }}</td>
-      <td>{{ $tasks->due_at }}</td>
+      <th scope="row">{{ $task->id}}</th>
+      <td>{{ $task->nome }}</td>
+      <td>{{ $task->description }}</td>
+      <td>{{ $task->due_at }}</td>
       </td>
     </tr>
 
